@@ -21,6 +21,7 @@ public class TimeEntryControllerTest {
     private TimeEntryRepository timeEntryRepository;
     private TimeEntryController controller;
 
+
     @BeforeEach
     public void setUp() {
         timeEntryRepository = mock(TimeEntryRepository.class);
@@ -31,9 +32,11 @@ public class TimeEntryControllerTest {
     public void testCreate() {
         long projectId = 123L;
         long userId = 456L;
-        TimeEntry timeEntryToCreate = new TimeEntry(projectId, userId, LocalDate.parse("2017-01-08"), 8);
+        long timeEntryId=1L;
 
-        long timeEntryId = 1L;
+        TimeEntry timeEntryToCreate = new TimeEntry(timeEntryId, projectId, userId, LocalDate.parse("2017-01-08"), 8);
+
+
         TimeEntry expectedResult = new TimeEntry(timeEntryId, projectId, userId, LocalDate.parse("2017-01-08"), 8);
         doReturn(expectedResult)
             .when(timeEntryRepository)
