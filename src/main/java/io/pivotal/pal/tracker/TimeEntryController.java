@@ -37,6 +37,7 @@ public class TimeEntryController {
         TimeEntry findTimeEntry = timeEntryRepository.find(id);
 
         if (findTimeEntry != null) {
+            actionCounter.increment();
             return new ResponseEntity<>(findTimeEntry, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -46,6 +47,7 @@ public class TimeEntryController {
     @GetMapping
     public ResponseEntity<List<TimeEntry>> list() {
        List<TimeEntry> timeEntries=timeEntryRepository.list();
+        actionCounter.increment();
        return new ResponseEntity<>(timeEntries,HttpStatus.OK);
 
     }
